@@ -1,8 +1,7 @@
 from TV import TV
 
 def main():
-    channel : int
-    volumeLevel: int
-    on: bool
-
+    Tv1 = TV('On', 15, 15)
+    print(Tv1.power)
+    print(Tv1.channel, Tv1.setVolume, Tv1.setChannel)
 
