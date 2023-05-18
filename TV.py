@@ -1,5 +1,6 @@
 import random
-
+import pyfiglet
+from colored import fg
 #Colors and Bold
 BLUE = '\033[94m'
 DARKCYAN = '\033[36m'
@@ -8,6 +9,10 @@ GREEN = '\033[92m'
 RED = '\033[91m'
 BOLD = '\033[1m'
 END = '\033[0m'
+color = fg('blue')
+BORDER = 175*'='
+
+print(GREEN+BOLD+BORDER+END)
 
 
 class TV():
@@ -18,18 +23,20 @@ class TV():
 
 #Turns On tv              
     def turnOn(tv):
-        return True
+        tv.power = 'On'
+        return tv.power
             
             
         
 #Turns off Tv.
     def turnOff(tv):
-        return False
+        tv.power = 'Off'
+        return tv.power
             
                              
 #Returns Channel for Tv.
     def getChannel(tv):
-        tv.channel = int(tv.channel)
+        tv.channel = int(input("What channel do you want to watch?(Choose from 1-120 only): "))
         if tv.channel < 120:
             if tv.channel >= 1:
                 return int(tv.channel)
@@ -39,19 +46,29 @@ class TV():
             raise Exception (RED + "Sorry, no numbers greater than 120"+ END)
         
 #Set channel a new Channel for Tv.
-    def setChannel(new_channel):
-        new_channel = input("Please enter NEW CHANNEL: ")
-        if int(new_channel) < 120:
-            if int(new_channel) >= 1:
-                return int(new_channel)
-            else: 
-                raise Exception(RED + "Sorry, no numbers below zero (0)."+ END)
+    def setChannel(tv):
+        response = input("Would you like to enter a NEW CHANNEL?('yes'/'no'): ")
+        if response == 'yes':
+            while response == 'yes':
+                tv.channel = input("Please enter NEW CHANNEL: ")
+                if int(tv.channel) < 120:
+                    if int(tv.channel) >= 1:
+                        response = input("Would you like to enter a NEW CHANNEL?('yes'/'no')")
+                    else: 
+                        raise Exception(RED + "Sorry, no numbers below zero (0)."+ END)
+                else:
+                    raise Exception (RED + "Sorry, no numbers greater than 120"+ END)
+            
+            return int(tv.channel)
+        
+        elif response.lower() == 'no':
+            pass
         else:
-            raise Exception (RED + "Sorry, no numbers greater than 120"+ END)
+            raise Exception(RED +"Please choose between 'yes' or 'no' only."+ END)
 
 #Returns Channel for Tv.
     def getVolume(tv):
-        tv.volume = int(tv.volume) 
+        tv.volume = int(input("What channel do you want to watch?(Choose from 1-7 only): ")) 
         if tv.volume < 8:
             if tv.volume >= 1:
                 return int(tv.volume)
@@ -62,32 +79,79 @@ class TV():
         
 #Set channel a new Volume for Tv.
     def setVolume(tv): 
-        new_volume = input("Please enter NEW VOLUME LEVEL: ")
-        if int(new_volume) < 8:
-            if int(new_volume) >= 1:
-                return int(new_volume)
-            else: 
-                raise Exception(RED + "Sorry, no numbers below zero (0)."+ END)
+        response = input("Would you like to enter a NEW CHANNEL?('yes'/'no')")
+        if response == 'yes':
+            while response == 'yes':
+                new_volume = input("Please enter NEW CHANNEL: ")
+                if int(new_volume) < 120:
+                    if int(new_volume) >= 1:
+                        response = input("Would you like to enter a NEW CHANNEL?('yes'/'no')")
+                    else: 
+                        raise Exception(RED + "Sorry, no numbers below zero (0)."+ END)
+                else:
+                    raise Exception (RED + "Sorry, no numbers greater than 120"+ END)
+            
+            return int(new_volume)
+        
+        elif response.lower() == 'no':
+            pass
         else:
-            raise Exception (RED + "Sorry, no numbers greater than 7"+ END)
-         
+            raise Exception(RED +"Please choose between 'yes' or 'no' only."+ END)
+        
+    
 #Increases Channel number by 1
     def channelUp(tv): 
-        return int(tv.channel) + 1
-
+        response = input("Would you like to increase the channel by one (1) ? ('yes'/'no'): ") 
+        if response == 'yes':
+            while response == 'yes':
+                int(tv.channel) + 1
+                response = input("Would you like to increase the channel by one (1) ? ('yes'/'no'): ")
+            
+            return int(tv.channel)
+        elif response.lower() == 'no':
+            pass
+        else:
+            raise Exception(RED +"Please choose between 'yes' or 'no' only."+ END)
+        
 #Decreases Channel number by 1
     def channelDown(tv):
-        return int(tv.channel) - 1
-
+        response = input("Would you like to decrease the channel by one (1) ? ('yes'/'no'): ") 
+        if response == 'yes':
+            while response == 'yes':
+                int(tv.channel) - 1
+                response = input("Would you like to decrease the channel by one (1) ? ('yes'/'no'): ")
+            
+            return int(tv.channel)
+        elif response.lower() == 'no':
+            pass
+        else:
+            raise Exception(RED +"Please choose between 'yes' or 'no' only."+ END)
+        
 #Increases Volume number by 1
     def volumeUp(tv): 
-        return int(tv.volume) + 1
+        response = input("Would you like to increase the volume by one (1) ? ('yes'/'no'): ") 
+        if response == 'yes':
+            while response == 'yes':
+                int(tv.volume) + 1
+                response = input("Would you like to increase the volume by one (1) ? ('yes'/'no'): ")
+            
+            return int(tv.volume)
+        elif response.lower() == 'no':
+            pass
+        else:
+            raise Exception(RED +"Please choose between 'yes' or 'no' only."+ END)
 
 #Decreases Volume number by 1
     def volumeDown(tv): 
-        return int(tv.volume) - 1
-    def show(tv):
-        print(tv.power, tv.channel, tv.volume)
+        response = input("Would you like to decrease the volume by one (1) ? ('yes'/'no'): ") 
+        if response == 'yes':
+            while response == 'yes':
+                int(tv.volume) - 1
+                response = input("Would you like to decrease the volume by one (1) ? ('yes'/'no'): ")
+            
+            return int(tv.volume)
+        elif response.lower() == 'no':
+            pass
+        else:
+            raise Exception(RED +"Please choose between 'yes' or 'no' only."+ END)
 
-Tv1 = TV()
-Tv1.show()
