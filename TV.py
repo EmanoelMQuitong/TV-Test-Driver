@@ -39,7 +39,8 @@ class TV():
 #Turns off Tv.
     def turnOff(tv):
         if tv.power == False:
-            quit()
+            tv.power = False
+            return tv.power
         else:
             pass
             
@@ -82,7 +83,7 @@ class TV():
             pass
         else:
             raise Exception(RED +"Please choose between 'yes' or 'no' only."+ END)
-        ('/n')
+        
 
 #Returns Channel for Tv.
     def getVolume(tv):
@@ -129,8 +130,9 @@ class TV():
         if response == 'yes':
             while response == 'yes':
                 tv.channel = int(tv.channel) + 1
+                print('\n')
                 response = input("Would you like to increase the channel by one (1) ? ('yes'/'no'): ")
-                ('/n')
+                
 
             return int(tv.channel)
         elif response.lower() == 'no':
@@ -144,8 +146,9 @@ class TV():
         if response == 'yes':
             while response == 'yes':
                 tv.channel = int(tv.channel) - 1
+                print('\n')
                 response = input("Would you like to decrease the channel by one (1) ? ('yes'/'no'): ")
-                ('/n')
+                
 
             return int(tv.channel)
         elif response.lower() == 'no':
@@ -159,8 +162,9 @@ class TV():
         if response == 'yes':
             while response == 'yes':
                 tv. volume = int(tv.volume) + 1
+                print('\n')
                 response = input("Would you like to increase the volume by one (1) ? ('yes'/'no'): ")
-                ('/n')
+                
 
             return int(tv.volume)
         elif response.lower() == 'no':
@@ -174,8 +178,9 @@ class TV():
         if response == 'yes':
             while response == 'yes':
                 tv. volume = int(tv.volume) - 1
+                print('\n')
                 response = input("Would you like to decrease the volume by one (1) ? ('yes'/'no'): ")
-                ('/n')
+                
 
             return int(tv.volume)
         elif response.lower() == 'no':
