@@ -115,12 +115,12 @@ print('\n')
 print(PURPLE+BOLD+"OUTPUT: "+END)
 print('\n')
 if Tv1.power == True:
-    print(PURPLE+"Television 1's channel is ,"+END,Tv1.channel,".", PURPLE+" Television 1's volume is ,"+END,Tv1.volume,".")
+    print(PURPLE+"Television 1's channel is ,"+END,Tv1.channel,PURPLE+"."+END, PURPLE+" Television 1's volume is ,"+END,Tv1.volume,PURPLE+"."+END)
 else: 
     print(RED+"Television 1 is Off."+END)
 print('\n')
 if Tv2.power == True:
-    print(PURPLE+"Television 2's channel is ,"+END,Tv2.channel,".", PURPLE+" Television 2's volume is ,"+END,Tv2.volume,".")
+    print(PURPLE+"Television 2's channel is ,"+END,Tv2.channel,PURPLE+"."+END, PURPLE+" Television 2's volume is ,"+END,Tv2.volume,PURPLE+"."+END)
 else: 
     print(RED+"Television 2 is Off."+END)
 
